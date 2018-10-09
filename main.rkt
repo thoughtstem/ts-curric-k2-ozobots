@@ -13,369 +13,282 @@
 (define (local-bitmap s)
   (bitmap/file (~a (path->string images) "/" s)))
 
+(define ozobot-img
+  (local-bitmap "ozobot.png"))
 
-(define (double-worksheet title1 sub-title1
-                          title2 sub-title2)
-  (auto-layout #:page-height 510
-   
-   (titled-image-panel title1
-                       (above/align "left"
-                                    (square 10 'solid 'transparent)
-                                    (text (~a " " sub-title1) 15 'black)
-                                    (square 10 'solid 'transparent)
-                                    (rectangle 500 400 'outline 'black)
-                                    (square 10 'solid 'transparent)
-                                    (text " Message:" 15 'black)
-                                    (square 10 'solid 'transparent))
-                       500)
+(define draw-a-circle-to-calibrate
+  (local-bitmap "draw-a-circle-to-calibrate.png"))
 
-   (titled-image-panel title2
-                       (above/align "left"
-                                    (square 10 'solid 'transparent)
-                                    (text (~a " " sub-title2) 15 'black)
-                                    (square 10 'solid 'transparent)
-                                    (rectangle 500 400 'outline 'black)
-                                    (square 10 'solid 'transparent)
-                                    (text " Message:" 15 'black)
-                                    (square 10 'solid 'transparent))
-                       500)))
+(define space
+  (square 10 'solid 'transparent))
 
-(define (worksheet title sub-title)
-  (auto-layout #:page-height 500
-   
-   (titled-image-panel title
-                       (above/align "left"
-                                    (square 10 'solid 'transparent)
-                                    (text (~a " " sub-title) 15 'black)
-                                    (square 10 'solid 'transparent)
-                                    (rectangle 1000 427 'outline 'black)))))
-
-
-
-
-(define end-of-class-instructions
-  (titled-image-panel #:fill 'lightgray
-                       "Instructor: Last 5-10 minutes"
-                       (bullets
-                         "Scratch: File > Download"
-                         "Change file name to student's first name"
-                         "Save in SAVE_MY_WORK"
-                         "Close Scratch & Leave open"
-                         "Wait for backup to finish")))
-
-(define end-of-class-instructions-short
-  (titled-image-panel #:fill 'lightgray
-                       "Instructor: File > Download.  Save as student's name in SAVE_MY_WORK."
-                       (rectangle 900 1 'solid 'white)))
-
-
-(define (draw-characters)
+(define (go-bot-go)
   (auto-layout
-   (titled-image-panel #:fill 'lightgray
-                       "Instructor: Before class"
-                       (bullets
-                         "Open Chrome"
-                         "Click Scratch bookmark"
-                         "Click \"Create\""
-                         "Close tutorial panel on right"
-                         "Delete Sprite1 (cat)")
-                       300)
-   
-   (titled-image-panel "1. Name your Comic Book"
-                       (local-bitmap "rename-scratch-project.png"))
-
-   (titled-image-panel "2. Find the Painting tools"
-                       (local-bitmap "click-paintbrush.png"))
-
-   (titled-image-panel "3. Create your Character"
-                       (local-bitmap "paint-a-character.png"))
-
-   (titled-image-panel "4. Create your 2nd Character"
-                       (local-bitmap "paint-another-character.png"))
-
-   end-of-class-instructions))
-
-(define (resize-sprite-hint)
-  (auto-layout #:page-height 500
-   
-   (titled-image-panel "1. Select your tool"
-                       (local-bitmap "grow-shrink-tools.png"))
-
-   (titled-image-panel "2. Go to costumes"
-                       (local-bitmap "costume-tab.png"))
-
-   (titled-image-panel "3. Select your sprite"
-                       (local-bitmap "shrink-click-sprite.png"))
-
-   (titled-image-panel "4. Click on the tool to stop"
-                       (rectangle 900 1 'solid 'white))))
-
-
-
-(define (draw-background)
-  (auto-layout
-   (titled-image-panel #:fill 'lightgray
-                       "Instructor: Before class"
-                       (bullets
-                         "Scan students in"
-                         "Open Chrome"
-                         "Open Scratch"
-                         "File > Upload from my computer"
-                         "Select file from SAVE_MY_WORK")
-                       400)
-   
-   (titled-image-panel "1. Finish characters"
-                       (scale 0.75
-                              (local-bitmap "paint-a-character.png")))
-
-   (titled-image-panel "2. Name BOTH of your Characters!  BOTH!"
-                       (local-bitmap "name-your-sprite.png"))
-
-
-   (titled-image-panel "3. Open the Backdrop painter"
-                       (scale 0.5 (local-bitmap "click-backdrops.png"))
-                       0)
-
-
-   (titled-image-panel "4. Paint your Background"
-                       (scale 1 (local-bitmap "draw-fill-tools.png")))
-
-   end-of-class-instructions-short))
-
-
-(define (saying-hello)
-  (auto-layout
-   (titled-image-panel #:fill 'lightgray
-                       "INSTRUCTOR: Scan students in, open Scratch and File > Upload."
-                       (rectangle 900 1 'solid 'white))
-   
-   (titled-image-panel "1. Click the First Character"
-                       (local-bitmap "click-first-character.png"))
-
-   (titled-image-panel "2. Get First Block"
-                       (local-bitmap "drag-first-block.png"))
-
-   (titled-image-panel "3. From [Looks] get \"say Hello!\" block"
-                       (local-bitmap "drag-say-hello-block.png"))
-
-   (titled-image-panel "4. Change Message"
-                       (local-bitmap "change-say-hello-block.png"))
-
-   (titled-image-panel "5. Click on the Next Character"
-                       (local-bitmap "click-second-character.png"))
-
-   (titled-image-panel "6. Code Second Character"
-                       (local-bitmap "code-second-character.png"))
-
-   (titled-image-panel "7. PLAY!"
-                       (local-bitmap "click-run.png"))
-
-   end-of-class-instructions))
-
-(define (new-style)
-  (auto-layout
-   (titled-image-panel #:fill 'lightgray
-                       "INSTRUCTOR: Scan students in, open Scratch and File > Upload."
-                       (rectangle 900 1 'solid 'white))
-   
-   (titled-image-panel "1. Copy the Costume"
-                       (local-bitmap "copy-costume.png"))
-
-   (titled-image-panel "2. Change to \"costume2\""
-                       (local-bitmap "change-to-second-costume.png"))
-
-   (titled-image-panel "3. Add Costume for Next Character"
-                       (local-bitmap "add-costume-for-next-character.png"))
-
-   (titled-image-panel "4. Change the Messages"
-                       (local-bitmap "change-the-messages.png"))
-
-   (titled-image-panel "5. PLAY!"
-                       (local-bitmap "click-run.png"))
-
-   end-of-class-instructions))
-
-
-
-(define (meet-their-pets)
-  (auto-layout
-   (titled-image-panel #:fill 'lightgray
-                       "INSTRUCTOR: Scan students in, open Scratch and File > Upload."
-                       (rectangle 900 1 'solid 'white)
-                       )
-   
-   (titled-image-panel "1. Create a new Sprite"
-                       (local-bitmap "create-new-sprite.png"))
-
-   (titled-image-panel "2. Draw the Pet!"
-                       (local-bitmap "draw-a-pet.png"))
-
-   (titled-image-panel "3. Name Them"
-                       (local-bitmap "rename-sprite.png"))
-   
-   (titled-image-panel "4. Create the Next Pet"
-                       (local-bitmap "create-another-pet.png"))
-   
-   (titled-image-panel "5. Make sure all characters get a pet"
-                       (local-bitmap "characters-with-pets.png"))
-   
-   (titled-image-panel "6. Add Thoughts to the Pets"
-                       (local-bitmap "add-thoughts-to-pets.png"))
-   
-   (titled-image-panel "7. Click the Flag!"
-                       (local-bitmap "click-run.png"))
-   
-
-   end-of-class-instructions-short))
-
-(define (favorite-foods)
-  (auto-layout
-   (titled-image-panel #:fill 'lightgray
-                       "INSTRUCTOR: Scan students in, open Scratch and File > Upload."
-                       (rectangle 900 1 'solid 'white)
-                       )
-   
-   (titled-image-panel "1. Create a New Sprite for BOTH Characters' Favorite Foods"
-                       (local-bitmap "favorite-food-sprites.png"))
-
-   (titled-image-panel "2. Code the Food Sprite"
-                       (local-bitmap "forever-turn-15-degrees.png"))
-
-   (titled-image-panel "3. Hide the Pets"
-                       (local-bitmap "think-then-hide.png"))
-   
-   (titled-image-panel "4. Change what your Characters Say"
-                       (local-bitmap "change-what-the-characters-say.png"))
-   
-   (titled-image-panel "5. Click the Flag!"
+   (titled-image-panel "1. Get to Know Ozobot"
                        (beside
-                        (local-bitmap "click-run-small.png")
-                        (above
-                         (text "You should see 4 sprites" 20 'red)
-                         (text "(Two characters, two favorite foods)" 20 'black))))
-   
-   end-of-class-instructions-short))
+                        ozobot-img
+                        space
+                        (above/align "left"
+                                     (text "Work TOGETHER to find:" 20 'black)
+                                     space
+                                     (bullets
+                                      "How Ozobot SEES"
+                                      "How Ozobot MOVES"
+                                      "The BUTTON"
+                                      "The LIGHT"))))
+
+   (titled-image-panel "2. Calibrate"
+                       (beside
+                        (text "Use this sheet \nto CALIBRATE \n(get your bot \nready to see!)" 20 'black)
+                        space
+                        (frame
+                         (scale .3
+                                (local-bitmap "calibrate.png")))))
 
 
-(define (favorite-toys)
-  (auto-layout
-   (titled-image-panel #:fill 'lightgray
-                       "INSTRUCTOR: Scan students in, open Scratch and File > Upload."
-                       (rectangle 900 1 'solid 'white)
-                       )
-   
-   (titled-image-panel "1. Create a New Sprite for BOTH Characters' Favorite Toys"
-                       (local-bitmap "favorite-toy-sprites.png"))
-
-   (titled-image-panel "2. Code the Food Sprite"
-                       (local-bitmap "forever-change-color-effect-wait.png"))
-
-   (titled-image-panel "3. Hide the Food"
-                       (local-bitmap "hide-sprite.png"))
-   
-   (titled-image-panel "4. Change the Text of your Characters and Click the Flag"
-                       (local-bitmap "change-text-for-toys-click-play.png"))
-   
-   (titled-image-panel "5. You should now have 8 drawings + 1 Background!"
-                       (local-bitmap "all-8-sprites-1-bg.png"))
-   
-   end-of-class-instructions-short))
-
-
-(define (our-house)
-  (auto-layout #:page-height 1050
-   (titled-image-panel #:fill 'lightgray
-                       "INSTRUCTOR: Scan students in, open Scratch and File > Upload."
-                       (rectangle 900 1 'solid 'white))
-   
-   (titled-image-panel "1. Hide the Toys!"
-                       (local-bitmap "hide-the-toys.png"))
-
-   (titled-image-panel "2. Create a New Backdrop and Draw House"
-                       (local-bitmap "new-backdrop.png"))
-
-   (titled-image-panel "3. Switching Backdrops Code"
-                       (local-bitmap "forever-next-backdrop-wait.png"))
-   
-   (titled-image-panel "4. Click the Flag"
+   (titled-image-panel "3. Try it!"
                        (above
-                        (local-bitmap "click-run-small.png")
-                        (text "Now the background should change" 20 'black)
-                        (text "every five seconds" 20 'red)))
-   
-   (titled-image-panel "5. Create New Backdrop and Draw 2nd House"
-                       (local-bitmap "new-backdrop-2.png"))
+                        space
+                        (text "Try on THIS SHEET.  Then fill in the lines on THIS PLAY SHEET." 20 'black)
+                        space
+                        (beside
+                         (frame (scale .3 (local-bitmap "light-show.png")))
+                         space space space space
+                         (frame (scale .3 (local-bitmap "make-the-connection.png"))))))
 
-   (titled-image-panel "6. Change Text and Click the Flag"
-                       (local-bitmap "change-text-and-run.png"))
-   
-   end-of-class-instructions-short))
 
-(our-house)
+   (titled-image-panel "4. Draw your own!"
+                       (beside
+                        (above/align "left"
+                                     draw-a-circle-to-calibrate
+                                     space space space 
+                                     (text "Draw your own colorful\nlines for Ozobot to\nfollow.\n\nUse this sheet for tips!" 20 'black))
+                        
+                        space space space space space
+                        
+                        (scale 0.6
+                               (local-bitmap "drawing-lines.png"))))
+   ))
+
+(define (color-coding-speed-and-tricks)
+  (auto-layout
+   (titled-image-panel "1. Calibrate"
+                       (beside
+                        (text "Use this sheet \nto CALIBRATE \n(get your bot \nready to see!)" 20 'black)
+                        space
+                        (frame
+                         (scale .3
+                                (local-bitmap "calibrate.png")))))
+
+
+   (titled-image-panel "2. Try it!"
+                       (above
+                        space
+                        (text "Try on THIS SHEET.  Then fill in the lines on THIS PLAY SHEET." 20 'black)
+                        space
+                        (beside
+                         (frame (scale .3 (local-bitmap "ozobot-color-codes.png")))
+                         space space space space
+                         (frame (scale .3 (local-bitmap "code-by-numbers.png"))))))
+
+
+   (titled-image-panel "3. Draw your own!"
+                       (above/align "left"
+                                    (beside
+                                     draw-a-circle-to-calibrate
+                                     space space space 
+                                     (text "Use these color codes in a brand new Ozobot Maze!" 20 'black))
+                                    space space
+                                    (local-bitmap "speed-cool-moves.png")))))
+
+
+(define (get-ready-to-code title file-name )
+  (titled-image-panel "1. Get Ready to Code"
+                      (beside
+                       (local-bitmap "get-ready-to-code-bookmark.png")
+
+                       (above
+                        (text title 20 'black)
+                        (local-bitmap file-name)))
+                      1000 300))
+
+(define (computer-coding)
+  (auto-layout
+   (get-ready-to-code "Click Level 1:"
+                      "click-level-1.png")
+
+
+   (titled-image-panel "2. Code"
+                       (local-bitmap "first-code.png"))
+
+
+   (titled-image-panel "3. Download and Run!"
+                       (above
+                        (local-bitmap "download-and-run.png")
+                        (text "Now add some 'Light Effect' blocks to your code!" 20 'black)))))
+
+
+
+
+(define (continuing-with-ozoblockly)
+  (auto-layout
+   (get-ready-to-code "Click Level 1 OR 2:"
+                      "click-level-1-or-2.png")
+
+   (titled-image-panel "2. Code"
+                       (local-bitmap "level-1-and-2-code.png"))
+
+
+   (titled-image-panel "3. Download and Run!"
+                       (above
+                        (local-bitmap "download-and-run.png")
+                        (text "Now customize your code! Add different movements or light effects!" 20 'black)))
+   ))
+
+
+(define (i-challenge-you)
+  (auto-layout
+   (get-ready-to-code "Click Level 1, 2, and 3:"
+                      "click-level-1-2-and-3.png")
+   
+   (titled-image-panel "2. Pick One"
+                       (beside/align "top"
+                                     (above/align "left"
+                                                  (text "Program your bot to:" 20 'black)
+                                                  space
+                                                  (bullets
+                                                   "Turn your favorite color."
+                                                   "Move forward 5 steps."
+                                                   "Zig-zag or skate."
+                                                   "Turn around."
+                                                   "Zig-zag or skate again."
+                                                   "End with a spin!"))
+                                     space space space space
+                                     (above/align "left"
+                                                  (text "Program your bot to do this forever:" 20 'black)
+                                                  space
+                                                  (bullets
+                                                   "Turn your favorite color."
+                                                   "Move forward 5 steps at medium speed."
+                                                   "Move backwards 10 steps at fast speed."
+                                                   "Spin 5 times."
+                                                   "Turn to the left."
+                                                   "End with a zig-zag!"))))
+
+   (titled-image-panel "3. Download and Run!"
+                       (above
+                        (local-bitmap "download-and-run-with-hints.png")
+                        (text "Now try the other challenge!" 30 'black)))))
+
+
+(define (challenges-2)
+  (auto-layout
+   (get-ready-to-code "Click Level 1, 2, and 3:"
+                      "click-level-1-2-and-3.png")
+   
+   (titled-image-panel "2. I Challenge You!"
+                       (scale 1.3
+                              (beside/align "top"
+                                            (above/align "left"
+                                                         (text "Dizzy Bot" 25 'black)
+                                                         space
+                                                         (text "Code Ozo to\ngo in a circle\nforever!" 20 'black))
+                                            space space space space
+                                            (above/align "left"
+                                                         (text "Bot on Patrol" 25 'black)
+                                                         space
+                                                         (text "Code Ozo to go back and\nforth 3+ times. Ozo should\nturn 1 color when going\nforward, and a different color\nwhen going back!" 20 'black))
+                                            space space space space
+                                            (above/align "left"
+                                                         (text "Walk Around the Block" 25 'black)
+                                                         space
+                                                         (text "Code Ozo to go in a square.\nOnce Ozo completes the\nsquare, Ozo should celebrate\nwith colors or a special move!" 20 'black)))))
+
+
+   (titled-image-panel "3. Download and Run!"
+                       (above
+                        (local-bitmap "download-and-run-with-hints.png")
+                        (text "Now, customize this code OR try the next challenge!" 30 'black)))))
+
+
+
+(define (ozobot-celebration)
+  (auto-layout
+   (get-ready-to-code "Click Level 1, 2, and 3:"
+                      "click-level-1-2-and-3.png")
+
+(titled-image-panel "2. I Challenge You!"
+                       (scale 1.3
+                              (beside/align "top"
+                                            (above/align "left"
+                                                         (text "Silly Walk" 25 'black)
+                                                         space
+                                                         (text "Code Ozo to go\nin a zig-zag or a\nskate forever." 20 'black))
+                                            space space space space
+                                            (above/align "left"
+                                                         (text "Walk Around the Block" 25 'black)
+                                                         space
+                                                         (text "Code Ozo to go in a square.\nOnce Ozo completes the\nsquare, Ozo should celebrate\nwith colors or a special move!" 20 'black))
+                                            space space space space
+                                            (above/align "left"
+                                                         (text "Ozo Olympics" 25 'black)
+                                                         space
+                                                         (text "Code Ozo to do an ice skating\nroutine for a maximum of 8\nblocks. BEFORE you load it,\ntell your teacher what the\nroutine will look like!" 20 'black)))))
+
+
+   (titled-image-panel "3. Download and Run!"
+                       (above
+                        (local-bitmap "download-and-run-with-hints.png")
+                        space
+                        (text "Now, try the next challenge OR" 25 'black)
+                        (text "Ask your teacher for markers and paper to draw a color-code adventure for Ozo" 25 'black)))))
 
 
 
 (define (quest1)
   (list
-   (double-worksheet "First Character" "Who is this?"
-                     "Second Character" "Who is this?")
-   (double-worksheet "First Character" "Who is this?"
-                     "Second Character" "Who is this?")
-   (draw-characters)
-   (resize-sprite-hint)
-   (resize-sprite-hint)))
+   (local-bitmap "calibrate.png")
+   (local-bitmap "light-show.png")
+   (local-bitmap "make-the-connection.png")
+   (local-bitmap "drawing-lines.png")
+   (go-bot-go)))
 
 (define (quest2)
   (list
-   (worksheet "First Background" "Where is this?")
-   (draw-background)))
-
+   (local-bitmap "calibrate.png")
+   (local-bitmap "ozobot-color-codes.png")
+   (local-bitmap "code-by-numbers.png")
+   (color-coding-speed-and-tricks)))
 
 (define (quest3)
   (list
-   (saying-hello)
+   (local-bitmap "wrong-way.png")
+   (local-bitmap "color-to-control.png")
+   (local-bitmap "name-game.png")
+   (local-bitmap "jump-monster.png")
+   (local-bitmap "stepdown-loop.png")
+   (local-bitmap "speed-cool-moves.png")
    ))
 
 (define (quest4)
   (list
-   (double-worksheet "First Character's Hats/Glasses/Shoes"  "What is it?"
-                     "Second Character's Hats/Glasses/Shoes" "What is it?")
-   (double-worksheet "First Character's Hats/Glasses/Shoes"  "What is it?"
-                     "Second Character's Hats/Glasses/Shoes" "What is it?")
-   (new-style)))
-
+   (computer-coding)))
 
 (define (quest5)
   (list
-   (double-worksheet "First Character's Pets"  "Pet's name?"
-                     "Second Character's Pets" "Pet's name?")
-   (double-worksheet "First Character's Pets"  "Pet's name?"
-                     "Second Character's Pets" "Pet's name?")
-   (meet-their-pets)))
+   (continuing-with-ozoblockly)))
 
 (define (quest6)
   (list
-   (double-worksheet "First Character's Food"  "What is it?"
-                     "Second Character's Food" "What is it?")
-   (double-worksheet "First Character's Food"  "What is it?"
-                     "Second Character's Food" "What is it?")
-   (favorite-foods)))
+   (i-challenge-you)))
 
 (define (quest7)
   (list
-   (double-worksheet "First Character's Toys"  "What is it?"
-                     "Second Character's Toys" "What is it?")
-   (double-worksheet "First Character's Toys"  "What is it?"
-                     "Second Character's Toys" "What is it?")
-   (favorite-toys)))
+   (challenges-2)))
 
 (define (quest8)
   (list
-   (double-worksheet "First Character's Home"  "Where is it?"
-                     "Second Character's Home" "Where is it?")
-   (double-worksheet "First Character's Home"  "Where is it?"
-                     "Second Character's Home" "Where is it?")
-   (our-house)))
+   (ozobot-celebration)))
 
 (define (quests)
   (list (quest1)
@@ -385,4 +298,4 @@
         (quest5)
         (quest6)
         (quest7)
-        ))
+        (quest8)))
