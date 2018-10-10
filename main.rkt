@@ -247,11 +247,11 @@
 
 (define (quest1)
   (list
-   (local-bitmap "calibrate.png")
-   (local-bitmap "light-show.png")
-   (local-bitmap "make-the-connection.png")
-   (local-bitmap "drawing-lines.png")
-   (go-bot-go)))
+   (disposable-material (local-bitmap "make-the-connection.png"))
+   (reusable-material   (local-bitmap "calibrate.png"))
+   (reusable-material   (local-bitmap "light-show.png"))
+   (reusable-material   (local-bitmap "drawing-lines.png"))
+   (reusable-material   (go-bot-go))))
 
 (define (quest2)
   (list
@@ -291,11 +291,11 @@
    (ozobot-celebration)))
 
 (define (quests)
-  (list (quest1)
-        (quest2)
-        (quest3)
-        (quest4)
-        (quest5)
-        (quest6)
-        (quest7)
-        (quest8)))
+  (list quest1
+        quest2
+        quest3
+        quest4
+        quest5
+        quest6
+        quest7
+        quest8))
